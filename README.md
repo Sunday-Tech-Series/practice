@@ -225,7 +225,7 @@ A Container class can be described as a special component that can hold the gath
 
 ## Swing Components
 Swing components are the interactive elements in a Java application.  
-Here is the list of Swing Compnents coveered in the webinar:
+Here is the list of Swing Compnents covered in the webinar:
 
 - [JFrame](#jframe)
 - [JPanel](#jpanel)
