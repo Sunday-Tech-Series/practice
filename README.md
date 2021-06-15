@@ -32,7 +32,7 @@ It doesn't matter if you join our webinar a little late or you prefer to do it a
 - [Methods of Component class](#methods-of-component-class)
 - [What is Container class](#what-is-container-class)
 - [Swing Components](#swing-components)
-- [Tic Tac Toe Game Code](#tic-tac-toe-game-code)
+- [Game Project](#game-project)
 
 ## General info
 
@@ -224,7 +224,19 @@ A Container class can be described as a special component that can hold the gath
 [Back to table of contents](#table-of-contents)
 
 ## Swing Components
-Swing components are the interactive elements in a Java application.
+Swing components are the interactive elements in a Java application.  
+Here is the list of Swing Compnents coveered in the webinar:
+
+- [JFrame](#jframe)
+- [JPanel](#jpanel)
+- [JButton](#jbutton)
+- [JLabel](#jlabel)
+- [JRadioButton](#jradiobutton)
+- [JTextField](#jtextfield)
+- [JTextArea](#jtextarea)
+- [JCheckBox](#jcheckbox)
+- [JComboBox](#jcombobox)
+- [JDialog](#jdialog)
 
 ### JFrame
 JFrame works like the main window where components like labels, buttons, textfields are added to create a GUI.
@@ -261,6 +273,7 @@ public class JFrameExample {
     }  
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JPanel
 JPanel, a part of Java Swing package, is a container that can store a group of components. The main task of JPanel is to organize components, various layouts can be set in JPanel which provide better organisation of components, however it does not have a title bar.
 
@@ -323,6 +336,7 @@ class JPanelExample extends JFrame {
     }
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JButton
 The JButton class is used to create a labeled button that has platform independent implementation. The application result in some action when the button is pushed. It inherits AbstractButton class.
 
@@ -347,6 +361,7 @@ public static void main(String[] args) {
 }  
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JLabel
 JLabel is a class of java Swing . JLabel is used to display a short string or an image icon. JLabel can display text, image or both . JLabel is only a display of text or image and it cannot get focus . JLabel is inactive to input events such a mouse focus or keyboard focus. By default labels are vertically centered but the user can change the alignment of label.
 
@@ -403,6 +418,7 @@ class JLabelExample extends JFrame {
     }
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JRadioButton
 The JRadioButton class is used to create a radio button. It is used to choose one option from multiple options. It is widely used in exam systems or quiz.
 
@@ -512,6 +528,7 @@ class JRadioButtonExample {
     }
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JTextField
 JTextField is a part of javax.swing package. The class JTextField is a component that allows editing of a single line of text. JTextField inherits the JTextComponent class and uses the interface SwingConstants.
 
@@ -597,6 +614,7 @@ class JTextFieldExample extends JFrame implements ActionListener {
      }
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JTextArea
 JTextArea is a part of java Swing package . It represents a multi line area that displays text. It is used to edit the text .
 JTextArea inherits JComponent class. The text in JTextArea can be set to different available fonts and can be appended to new text . A text area can be customized to the need of user .
@@ -678,6 +696,7 @@ class JTextAreaExample extends JFrame implements ActionListener {
     }
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JCheckBox
 JCheckBox is a part of Java Swing package . JCheckBox can be selected or deselected . It displays it state to the user . JCheckBox is an implementation to checkbox . JCheckBox inherits JToggleButton class.
 
@@ -731,6 +750,7 @@ class JCheckBoxExample extends JFrame {
     }
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JComboBox
 JComboBox is a part of Java Swing package. JComboBox inherits JComponent class . JComboBox shows a popup menu that shows a list and the user can select a option from that specified list . JComboBox can be editable or read- only depending on the choice of the programmer.
 
@@ -814,6 +834,7 @@ class JComboBoxExample extends JFrame implements ItemListener {
     }
 }
 ```
+[Back to Swing Components](#swing-components)
 ### JDialog
 JDialog is a part Java swing package. The main purpose of the dialog is to add components to it. JDialog can be customized according to user need .
 
@@ -886,9 +907,11 @@ class JDialogExample extends JFrame implements ActionListener {
     }
 }
 ```
+[Back to Swing Components](#swing-components)
+
 [Back to table of contents](#table-of-contents)
 
-## Tic Tac Toe Game Code
+## Game Project
 
 [Back to table of contents](#table-of-contents)
 
