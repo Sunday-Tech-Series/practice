@@ -1,4 +1,4 @@
-# Competitive Coding with C++
+# GUI Game Programming with Java
 
 <!-- ![]() -->
  This repository will act as a guide for you throughout the webinar.
@@ -10,10 +10,9 @@ It doesn't matter if you join our webinar a little late or you prefer to do it a
 - Webinar youtube link
 - Slide deck
 - [Whatsapp group chat](http://bit.ly/STS-1-WA)
-- [Online Compiler](https://www.onlinegdb.com/online_c++_compiler)
 - [Polling during session](https://www.menti.com/)
 
-> *You need to have a basic knowledge of C/C++ language. If not, don't worry. Learn more about it [here](https://www.youtube.com/watch?v=BS3mT0NgKzM).*  
+> *You need to have a basic knowledge of Java language. If not, don't worry. Learn more about it [here](https://www.youtube.com/watch?v=gzoMqjwO6Wo).* 
 
 ## Participation Certificate
 
@@ -24,1301 +23,874 @@ It doesn't matter if you join our webinar a little late or you prefer to do it a
 
 ## Table of Contents
 - [General info](#general-info)
-- [Basic Input Output](#basic-input-output) <!-- - [Interactive Console](#interactive-console) - [Text Streams](#text-streams)-->
-- [Datatypes](#datatypes)
-- [Operators](#operators)
-- [Control Statements](#control-statements)
-- [Arrays](#arrays)
-- [Space Time Complexity](#space-time-complexity)
-- [Algorithms](#algorithms)
-- [STL](#stl)
-- [Create Your Profile on HackerRank](#create-your-profile-on-hackerrank)
-- [Contest](#contest)
+- [Installation of JDK and Eclipse IDE](#installation-of-jdk-and-eclipse-ide)
+- [Introduction to GUI](#introduction-to-gui)
+- [APIs in GUI](#apis-in-gui)
+- [AWT v/s Swing](#awt-vs-swing)
+- [What is Java Swing](#what-is-java-swing)
+- [What is Component class](#what-is-component-class)
+- [Methods of Component class](#methods-of-component-class)
+- [What is Container class](#what-is-container-class)
+- [Swing Components](#swing-components)
+- [Tic Tac Toe Game Code](#tic-tac-toe-game-code)
 
 ## General info
 
-- Competitive programming is a mind sport usually held over the Internet or a local network, involving participants trying to program according to provided specifications. Competitive programming is recognized and supported by several multinational software and Internet companies, such as Google and Facebook. There are several organizations who host programming competitions on a regular basis.
-- Focus of the webinar is to emphasize on the importance of Competitive Coding. That is:
-  1. Practicing it makes you a better coder who learns to solve questions with ease.
-  2. Trains our mind to be more focused and think faster.
-  3. Improves logic-based thinking.
-  4. Inculcate the habit of learning.
-  5. Gives an edge in the technical interviews of big companies like Google, Microsoft, Yahoo! etc. 
+## Installation of JDK and Eclipse IDE
 
-## Basic Input Output
+- **Java Development Kit** (JDK) is a software development environment used for developing Java applications and applets. It includes the Java Runtime Environment (JRE), an interpreter/loader (Java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc) and other tools needed in Java development.
+- **Eclipse** is an open-source Integrated Development Environment (IDE) supported by IBM. The Eclipse platform can be used to develop rich client applications, integrated development environments and other tools. It is popular for Java application development and Android apps, but can be used as an IDE for any programming language for which a plug-in is available. Eclipse is cross-platform and runs under Windows, Linux and macOS. 364 companies reportedly use Eclipse in their tech stacks, including Accenture, ViaVarejo, and Zalando.  
+We are going to use them to devlop our GUI game.
+> To Download Standard Edition of JDK14 click [here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html#license-lightbox)  
+> To Download Eclipse IDE 2021-03 click [here](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-03/R/eclipse-inst-jre-win64.exe)
 
-The very first step of getting started with competitive coding or rather programming is to understand:
+- _[Here is a video to help in downloading them](https://user-images.githubusercontent.com/85074532/122014794-2492d080-cddd-11eb-9595-672432b43686.mp4)_
 
-- How to read input data?
-- How to output the answer?
-
-There are two ways of doing so:
-
-1. [Interactive Console](#interactive-console)
-2. [Text Streams](#text-streams)
-
-### Interactive Console
-
-In this method, we read the input data and print the result on the same console during the time of execution of the program. 
-For project devlopment, most of the IDEs use this method as well as, it is also used when we run our code on the command prompt of our system.
-
-- _Program to demonstrate input and output using interactive console._
- 
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int a,b;
-    cout << "Enter value of a: ";
-    cin >> a;
-    
-    cout << "Enter value of b: ";
-    cin >> b;
-
-    cout << "The quotient is: "<<a/b;
-    return 0;
-}
-```
-<!-- ![]() -->
-
-### Text Streams
-
-In this method, input and out happens at different places. Input data is read from standard input stream (**STDIN**) and results are printed to standard output stream (**STDOUT**).
-All the platforms for competitive coding usually use this method for input and output.
-
-> _**Note:** We need to provide input before executing the code which was not in the case of interactive cnsole._ 
-
-- _Program to demonstrate input and output using text streams._
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int a,b;
-    cin>> a >> b;
-
-    cout << a/b;
-    return 0;
-}
-```
-<!-- ![]() -->
-<!-- ![]() -->
-
-Careful not to print any thing else in the output, such as `cout << "The quotient is: " << a/b;` because the online judge directly compares your output to expected output like normal string comparison.  
-Say if expected output is `2`, and the code prints`The quotient is: 2` then when online judge compares `2` with `The quotient is: 2`, it will say that the code produced wrong result. Every problem has a predefined input and output format in competitive coding which everyone needs to follow.
-
-There is another stream known as the standard error stream (**STDERR**) where all the error messages are shown whenever an exception is occured in the code. Many times these messages are shown on the STDOUT only so that we don't need a differet STDERR.
-
-- _Run this program using `10 0` as input and you will see the error message on the STDERR._
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int a,b;
-    cin>>a>>b;
-    try{
-        if(b==0){
-            throw "Can Not Divide by Zero!";
-        }
-        cout<<"The quotient is: "<<a/b;   
-    }
-    catch(const char* str){
-        cerr<<str;
-    }
-    return 0;
-}
-```
-<!-- ![]() -->
 
 [Back to table of contents](#table-of-contents)
 
+## Introduction to GUI
 
-## Datatypes
+GUI stands for Graphical User Interface, a term used not only in Java but in all programming languages that support the development of GUIs. A program's graphical user interface presents an easy-to-use visual display to the user. It is made up of graphical components (e.g., buttons, labels, windows) through which the user can interact with the page or application. GUI is a software platform that presents the back-end data visually to users. 
 
-**Data types** are used to tell the variables the type of data it can store. 
-Whenever a variable is defined in C++, the compiler allocates some memory for that variable based on the data-type with which it is declared. 
-Every data type requires a different amount of memory.
+A GUI includes a range of user interface elements — which just means all the elements that display when you are working in an application. These can include:
 
-<!-- ![]() -->
-
-Data types in C++ is mainly divided into three types: 
-
-- Primitive
-- Derived
-- User-Defined
- 
-**Primitive Data Types:** These data types are built-in or predefined data types and can be used directly by the user to declare variables. 
-_**example:** int num, char ch, float dec, etc._ 
-
-- _program below shows the use data types with variables._
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int i = 10;
-    float f = 0.09f;
-    double d = 3.14698467890;
-    char c = 'A';
-    bool b = true;
-    
-    cout<<" Primitive Data Types: "<<endl<<endl;
-    
-    cout<<"             Interger: "<<i<<endl;
-    cout<<"       Floating Point: "<<f<<endl;
-    cout<<"Double Floating Point: "<<d<<endl;
-    cout<<"            Character: "<<c<<endl;
-    cout<<"              Boolean: "<<b<<endl;
-    
-    return 0;
-}
-```
-
-**Derived Data Types:** The data types that are derived from the primitive or built-in data types are referred to as Derived Data Types. 
-_**example:** int* ptr, char\[size\] str etc._  
-For more info on this visit [here](https://www.geeksforgeeks.org/derived-data-types-in-c/).
-
-**User-Defined Data Types:** These data types are defined by user itself. Like, defining a class in C++ or a structure.  
-_**example:** class A{defination of this class}, struct B{defination of this structure}, etc._  
-For more info on this visit [here](https://www.geeksforgeeks.org/user-defined-data-types-in-c/).
-
-### Datatype Modifiers
-
-<!-- ![]() -->
-
-As the name implies, datatype modifiers are used with the built-in data types to modify the length of data that a particular data type can hold. 
-
-- _The table below summarizes the primitive data-type's size and range, with and without modifiers._ 
-
-<table>
-<thead>
-	<tr>
-		<td> <strong>Data Type</strong> </td>
-		<td> <strong>Size(in bytes)</strong> </td>
-		<td> <strong>Range</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td> bool </td>
-		<td> 1 </td>
-		<td><em>true</em> or <em>false</em> </td>
-	</tr>
-	<tr>
-		<td> char </td>
-		<td> 1 </td>
-		<td> -128 to 127 </td>
-	</tr>
-	<tr>
-		<td> unsigned char </td>
-		<td> 1 </td>
-		<td> 0 to 255 </td>
-	</tr>
-	<tr>
-		<td> short int </td>
-		<td> 2 </td>
-		<td> -32,768 to 32,767 </td>
-	</tr>
-	<tr>
-		<td> unsigned short int </td>
-		<td> 2 </td>
-		<td> 0 to 65,535 </td>
-	</tr>
-	<tr>
-		<td> int </td>
-		<td> 4 </td>
-		<td> -2147483648 to 2147483647 </td>
-	</tr>
-	<tr>
-		<td> unsigned int </td>
-		<td> 4 </td>
-		<td> 0 to 4,294,967,295 </td>
-	</tr>
-	<tr>
-		<td> long int </td>
-		<td> 4 </td>
-		<td> -2147483648 to 2147483647 </td>
-	</tr>
-	<tr>
-		<td> unsigned long int </td>
-		<td> 4 </td>
-		<td> 0 to 4,294,967,295 </td>
-	</tr>
-	<tr>
-		<td> long long int </td>
-		<td> 8 </td>
-		<td> -2<sup>63</sup> to 2<sup>63</sup>-1 </td>
-	</tr>
-	<tr>
-		<td> unsigned long long int </td>
-		<td> 8 </td>
-		<td> 0 to 18,446,744,073,709,551,615 </td>
-	</tr>
-	<tr>
-		<td> float </td>
-		<td> 4 </td>
-		<td> ±1.18 x 10<sup>-38</sup> to ±3.4 x 10<sup>38</sup> (6 to 9 significant digits) </td>
-	</tr>
-	<tr>
-		<td>  double </td>
-		<td> 8 </td>
-		<td> ±2.23 x 10<sup>-308</sup> to ±1.80 x 10<sup>308</sup> (15 to 18 significant digits) </td>
-	</tr>
-	<tr>
-		<td>  long double </td>
-		<td> 12 </td>
-		<td> ±3.36 x 10<sup>-4932</sup> to ±1.18 x 10<sup>4932</sup> (18 to 22 significant digits) </td>
-	</tr>
-</tbody>
-</table>
-
-> _**Note:** In C++ the size of data types varies in different architectures. we have considerd here GCC 32 bit._ 
-
-- We can display the size of all the data types by using the sizeof() operator and passing the keyword of the datatype as argument to this function as shown below: 
-```cpp
-cout << "Integer: " << sizeof(int) << " bytes.";   // this will give the output "Integer: 4 bytes." 
-```
+- Input controls such as buttons, dropdown lists, checkboxes, and text fields.
+- Informational elements such as labels, banners, icons, or notification dialogs.
 
 [Back to table of contents](#table-of-contents)
 
+## APIs in GUI
+API stands for Application Program Interface, which has a set of routines and protocols that let your machines talk directly to other machines. An API is the brains of a GUI.
 
-## Operators
-
-**Operators** are symbols that tell the compiler to perform specific mathematical or logical manipulations. Here, we will try to cover the most commonly used operators in programming.
-
-First, let's categorize them:
-
-1. [Arithmetic](#arithmetic-operators)
-2. [Relational](#relational-operators)
-3. [Bitwise](#bitwise-operators)
-4. [Logical](#logical-operators)
-5. [Assignment](#assignment-operators)
-6. [Increment](#increment-decrement-operators)
-7. [Miscellaneous](#miscellaneous-operators)
-
-### Arithmetic Operators
-<table>
-<thead>
-	<tr>
-		<td> <strong>Symbol</strong> </td>
-		<td> <strong>Operation</strong> </td>
-		<td> <strong>Usage</strong> </td>
-		<td> <strong>Explanation</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td> + </td>
-		<td> addition </td>
-		<td> x + y </td>
-		<td>Adds values on either side of the operator</td>
-	</tr>
-	<tr>
-		<td> - </td>
-		<td> subtraction </td>
-		<td> x - y </td>
-		<td>Subtracts the right hand operand from the left hand operand</td>
-	</tr>
-	<tr>
-		<td> * </td>
-		<td> multiplication </td>
-		<td> x * y </td>
-		<td>Multiplies values on either side of the operator</td>
-	</tr>
-	<tr>
-		<td>  / </td>
-		<td> division </td>
-		<td> x / y </td>
-		<td>Divides the left hand operand by the right hand operand</td>
-	</tr>
-	<tr>
-		<td>  % </td>
-		<td> modulus </td>
-		<td> x % y </td>
-		<td>Divides the left hand operand by the right hand operand and returns remainder</td>
-	</tr>
-</tbody>
-</table>
-
-
-### Relational Operators
-These operators are used for comparison. They return either **true** or **false** based on the comparison result. The operator '==' should not be confused with '='. The relational operators are as follows:
-
-<table>
-<thead>
-	<tr>
-		<td> <strong>Symbol</strong> </td>
-		<td> <strong>Operation</strong> </td>
-		<td> <strong>Usage</strong> </td>
-		<td> <strong>Explanation</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>  == </td>
-		<td> equal </td>
-		<td> x == y </td>
-		<td>Checks if the values of two operands are equal or not, if yes then condition becomes true.</td>
-	</tr>
-	<tr>
-		<td>  != </td>
-		<td> not equal </td>
-		<td> x != y </td>
-		<td>Checks if the values of two operands are equal or not, if values are not equal then condition becomes true.</td>
-	</tr>
-	<tr>
-		<td>  &gt; </td>
-		<td> greater than </td>
-		<td> x &gt; y </td>
-		<td>Checks if the value of the left operand is greater than the value of the right operand, if yes then condition becomes true</td>
-	</tr>
-	<tr>
-		<td>  &lt; </td>
-		<td> less than </td>
-		<td> x &lt; y </td>
-		<td>Checks if the value of the left operand is less than the value of the right operand, if yes then condition becomes true.</td>
-	</tr>
-	<tr>
-		<td>  &gt;= </td>
-		<td> greater than or equal </td>
-		<td> x &gt;= y </td>
-		<td>Checks if the value of the left operand is
-		greater than or equal to the value of the right operand, if yes then condition becomes true.</td>
-	</tr>
-	<tr>
-		<td>  &lt;= </td>
-		<td> less than or equal </td>
-		<td> x &lt;= y </td>
-		<td>Checks if the value of the left operand is less
-		than or equal to the value of the right operand, if yes then condition becomes true.</td>
-	</tr>
-</tbody>
-</table>
-
-### Bitwise Operators
-These operators are very useful and we have some tricks based on these operators. These operators convert the given integers into binary and then perform the required operation, and give back the result in decimal representation.
-
-<table>
-<thead>
-	<tr>
-		<td> <strong>Symbol</strong> </td>
-		<td> <strong>Operation</strong> </td>
-		<td> <strong>Usage</strong> </td>
-		<td> <strong>Explanation</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>  &amp; </td>
-		<td> bitwise AND </td>
-		<td> x &amp; y </td>
-		<td>Sets the bit to the result if it is set in both operands.</td>
-	</tr>
-	<tr>
-		<td>  | </td>
-		<td> bitwise OR </td>
-		<td> x | y </td>
-		<td>Sets the bit to the result if it is set in either operand.</td>
-	</tr>
-	<tr>
-		<td>  ^ </td>
-		<td> bitwise XOR </td>
-		<td> x ^ y </td>
-		<td>Sets the bit if it is set in one operand but not both</td>
-	</tr>
-	<tr>
-		<td>  ~ </td>
-		<td> bitwise NOT </td>
-		<td> ~x </td>
-		<td>Unary operator and has the effect of 'flipping' bits,i.e, flips 1 to 0 and 0 to 1.</td>
-	</tr>
-	<tr>
-		<td>  &lt;&lt; </td>
-		<td> left shift </td>
-		<td> x &lt;&lt; y </td>
-		<td>The left operand's value is moved left by the number of bits specified by the right operand. It is equivalent to multiplying x by $$2^y$$</td>
-	</tr>
-	<tr>
-		<td>  &gt;&gt; </td>
-		<td> right shift </td>
-		<td> x &gt;&gt; y </td>
-		<td>The left operand's value is moved right by the number of bits specified by the right operand.It is equivalent to dividing x by $$2^y$$</td>
-	</tr>
-</tbody>
-</table>
-
-_**Examples:**_  
-Assume x = 42, y = 27  
-x = 0010 1010  
-y = 0001 1011  
-x & y = 0000 1010= 10 (in decimal)  
-x | y = 0011 1011= 59  
-x ^ y = 0011 0001= 49  
- ~x = 1101 0101  
-x&lt;&lt;2 = 1010 1000 = 168. Notice, the bits are shifted 2 units to the left and the new bits are filled by 0s.  
-x&gt;&gt;2 = 0000 1010 = 10. Notice, the bits are shifted 2 units to the right and the new bits are filled by 0s.
-
-
-### Logical Operators 
-These operators take boolean values as input and return boolean values as output.  
-
-> _**Note:** In C,C++ any non-zero number is treated as true and 0 as false but this doesn't hold for Java._  
-
-<table>
-<thead>
-	<tr>
-		<td> <strong>Symbol</strong> </td>
-		<td> <strong>Operation</strong> </td>
-		<td> <strong>Usage</strong> </td>
-		<td> <strong>Explanation</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>  &amp;&amp; </td>
-		<td> logical AND </td>
-		<td> x &amp;&amp; y </td>
-		<td>Returns true if both x and y are true else returns false.</td>
-	</tr>
-	<tr>
-		<td>  || </td>
-		<td> logical OR </td>
-		<td> x || y </td>
-		<td>Returns false if neither x nor y is true else returns true</td>
-	</tr>
-	<tr>
-		<td>  ! </td>
-		<td> logical NOT </td>
-		<td> ! x </td>
-		<td>Unary operator. Returns true if x is false else returns false.
-            </td>
-	</tr>
-</tbody>
-</table>  
-
-### Assignment Operators  
-<table>
-<thead>
-	<tr>
-		<td> <strong>Symbol</strong> </td>
-		<td> <strong>Operation</strong> </td>
-		<td> <strong>Usage</strong> </td>
-		<td> <strong>Equivalence</strong> </td>
-		<td> <strong>Explanation</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>  = </td>
-		<td> assignment </td>
-		<td> x = y </td>
-		<td></td>
-		<td>Assigns value from the right side operand(s) to the left side operand.</td>
-	</tr>
-	<tr>
-		<td>  += </td>
-		<td> add and assignment </td>
-		<td> x += y </td>
-		<td> x = x + y </td>
-		<td>Adds the right side operand to the left side operand and assigns the result to the left side operand.</td>
-	</tr>
-	<tr>
-		<td>  -= </td>
-		<td> subtract and assignment </td>
-		<td> x -= y </td>
-		<td> x = x - y </td>
-		<td>Subtracts the right side operand from the left side operand and assigns the result to the left side operand.</td>
-	</tr>
-	<tr>
-		<td> *= </td>
-		<td> multiply and assignment </td>
-		<td> x *= y </td>
-		<td> x = x * y </td>
-		<td>Multiplies the right side operand with the left side operand and assigns the result to the left side operand.</td>
-	</tr>
-	<tr>
-		<td>  /= </td>
-		<td> divide and assignment </td>
-		<td> x /= y </td>
-		<td> x = x / y </td>
-		<td>Divides the left side operand with the right side  operand and assigns the result to the left side operand.</td>
-	</tr>
-	<tr>
-		<td>  %= </td>
-		<td> modulus and assignment </td>
-		<td> x %= y </td>
-		<td> x= x % y </td>
-		<td>Takes modulus using the two operands and assigns the result to the left side operand.</td>
-	</tr>
-	<tr>
-		<td>  &lt;&lt;= </td>
-		<td> left shift and assignment </td>
-		<td> x &lt;&lt;= y </td>
-		<td> x = x &lt;&lt; y </td>
-		<td>Shifts the value of x by y bits towards the left and stores the result back in x.</td>
-	</tr>
-	<tr>
-		<td>  &gt;&gt;= </td>
-		<td> right shift and assignment</td>
-		<td> x &gt;&gt;= y </td>
-		<td> x = x &gt;&gt; y </td>
-		<td>Shifts the value of x by y bits towards the right and stores the result back in x.</td>
-	</tr>
-	<tr>
-		<td>  &amp;= </td>
-		<td> bitwise AND and assignment </td>
-		<td> x &amp;= y </td>
-		<td> x = x &amp; y </td>
-		<td>Does x&amp;y and stores result back in x.</td>
-	</tr>
-	<tr>
-		<td>  |= </td>
-		<td> bitwise OR and assignment </td>
-		<td> x |= y </td>
-		<td> x = x | y </td>
-		<td>Does x|y and stores result back in x</td>
-	</tr>
-	<tr>
-		<td>  ^= </td>
-		<td> bitwise XOR and assignment </td>
-		<td> x ^= y </td>
-		<td> x= x ^ y </td>
-		<td>Does x^y and stores result back in x.</td>
-	</tr>
-</tbody>
-</table>  
-
-### Increment Decrement Operators
-These are **unary** operators. Unary operators are the operators which require only one operand.  
-<table>
-<thead>
-	<tr>
-		<td> <strong>Symbol</strong> </td>
-		<td> <strong>Operation</strong> </td>
-		<td> <strong>Usage</strong> </td>
-		<td> <strong>Explanation</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>  ++ </td>
-		<td> Postincrement </td>
-		<td> x++ </td>
-		<td>Increment x by 1 after using its value</td>
-	</tr>
-	<tr>
-		<td>  -- </td>
-		<td> Postdecrement </td>
-		<td> x-- </td>
-		<td>Decrement x by 1 after using its value</td>
-	</tr>
-	<tr>
-		<td>  ++ </td>
-		<td> Preincrement </td>
-		<td> ++x </td>
-		<td>Increment x by 1 before using its value</td>
-	</tr>
-	<tr>
-		<td>  -- </td>
-		<td> Predecrement </td>
-		<td> --x </td>
-		<td>Decrement x by 1 before using its value</td>
-	</tr>
-</tbody>
-</table>
-
-_**Examples:**_  
-Let x = 10  
-then, after  **y = x++**;  
-y = 10 and x = 11, this is because x is assigned to y before its increment.  
-but if we had written **y = ++x**;  
-y = 11 and x = 11, because x is assigned to y after its increment.  
-Same holds for decrement operators.
-
-### Miscellaneous Operators  
-**Conditional Operator**: It is similar to **if-else**:  
-```
-x = (condition) ? a : b
-```
-If condition is true,then a is assigned to x else b is assigned to x. It is a ternary operator because it uses the condition, a and b _i.e._ three operands (the condition is also treated as a boolean operand).  
-
-### Operator Precedence and Associativity  
-**Precedence Rules**:  
-The precedence rules specify which operator is evaluated first when two operators with different precedence are adjacent in an expression.  
-_For example:_ `x = a + ++b`
-
-This expression can be seen as postfix increment on a and addition with b or prefix increment on b and addtion to a. Such issues are resolved by using precedence rules.  
-**Associativity Rules**:  
-The associativity rules specify which operator is evaluated first when two operators with the same precedence are adjacent in an expression.  
-_For example:_ `a * b /c`
-
-**Operator Precedence**:  
-The following table describes the precedence order of the operators mentioned above. Here, the operators with the highest precedence appear at the top and those with the lowest at the bottom. In any given expression, the operators with higher precedence will be evaluated first.  
-**LR** = Left to Right  
-**RL** = Right to Left  
-<table>
-<thead>
-	<tr>
-		<td> <strong>Category</strong> </td>
-		<td> <strong>Associativity</strong> </td>
-		<td> <strong>Operator</strong> </td>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>  Postfix </td>
-		<td> LR </td>
-		<td>++ --</td>
-	</tr>
-	<tr>
-		<td>  Unary </td>
-		<td> RL </td>
-		<td>+ - ! ~ ++ --</td>
-	</tr>
-	<tr>
-		<td>  Multiplicative </td>
-		<td> LR </td>
-		<td>* / % </td>
-	</tr>
-	<tr>
-		<td>  Additive </td>
-		<td> LR </td>
-		<td>+ - </td>
-	</tr>
-	<tr>
-		<td>  Shift </td>
-		<td> LR </td>
-		<td> &lt;&lt; &gt;&gt; </td>
-	</tr>
-	<tr>
-		<td>  Relational  </td>
-		<td> LR </td>
-		<td>&lt; &lt;= &gt; &gt;=</td>
-	</tr>
-	<tr>
-		<td>  Equality </td>
-		<td> LR </td>
-		<td>==  != </td>
-	</tr>
-	<tr>
-		<td>  Bitwise AND </td>
-		<td> LR</td>
-		<td>&amp; </td>
-	</tr>
-	<tr>
-		<td>  Bitwise XOR </td>
-		<td> LR </td>
-		<td> ^ </td>
-	</tr>
-	<tr>
-		<td>  Bitwise OR </td>
-		<td> LR </td>
-		<td> | </td>
-	</tr>
-	<tr>
-		<td>  Logical AND </td>
-		<td> LR </td>
-		<td> &amp;&amp; </td>
-	</tr>
-	<tr>
-		<td>  Logical OR </td>
-		<td> LR </td>
-		<td> || </td>
-	</tr>
-	<tr>
-		<td>  Conditional </td>
-		<td> RL </td>
-		<td> ?: </td>
-	</tr>
-	<tr>
-		<td>  Assignment </td>
-		<td> RL </td>
-		<td> = += -= *= /= %= &gt;&gt;= &lt;&lt;= &amp;= ^= |= </td>
-	</tr>
-</tbody>
-</table>  
+- **Java AWT:** AWT(Abstract Window Toolkit) is an API to develop GUI or window-based applications in java. Java AWT components are platform-dependent i.e., components are displayed according to the view of operating system. AWT is heavyweight i.e., its components are using the resources of OS.
+- **Java Swing:** Swing in Java is a lightweight GUI toolkit which has a wide variety of widgets for building optimized window-based applications. It is a part of the JFC (Java Foundation Classes). It is built on top of the AWT API and entirely written in java. It is platform independent unlike AWT and has lightweight components.
+- **Java FX:** JavaFX is a Java library used to develop Desktop applications as well as Rich Internet Applications (RIA). The applications built in JavaFX, can run on multiple platforms including Web, Mobile and Desktops.
 
 [Back to table of contents](#table-of-contents)
 
+## AWT v/s Swing
 
-## Control Statements
+<table>
+<thead>
+	<tr>
+		<td> <strong>No.</strong> </td>
+		<td> <strong>Java AWT</strong> </td>
+		<td> <strong>Java Swing</strong> </td>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td> 1. </td>
+		<td> AWT components are platform-dependent. </td>
+		<td> Swing components are platform-independent. </td>
+	</tr>
+	<tr>
+		<td> 2. </td>
+		<td> AWT components are heavyweight </td>
+		<td> Swing components are lightweight </td>
+	</tr>
+	<tr>
+		<td> 3. </td>
+		<td> AWT doesn't support pluggabe look and feel </td>
+		<td> Swing supports pluggabe look and feel </td>
+	</tr>
+	<tr>
+		<td> 4. </td>
+		<td> AWT provides less components than Swing </td>
+		<td> Swing providees more powerful components such as tables, lists, scrollpanes, colorchooser, tabbedpane etc. </td>
+	</tr>
+	<tr>
+		<td> 5. </td>
+		<td> AWT doesn't follow MVC(model view controller) where model represents data, view represents presentation, and controller act as an interface between model and view </td>
+		<td> Swing follow MVC </td>
+	</tr>
+</tbody>
+</table>
 
-A control statement is a statement that determines the execution of other statements.  
-These can be classified into these three categories:
+[Back to table of contents](#table-of-contents)
 
-- [Decision Statements](#decision-statements)
-- [Iterative Statements](#iterative-statements)
-- [Jump Statements](#jump-statements)
+## What is Java Swing
 
-### Decision Statemetns
-these statemetns decides the flow of program on the basis of a deciding condition.
+Java Swing is a set of APIs that provides a graphical user interface (GUI) for the java programs. The Java Swing was developed based on earlier APIs called Abstract Windows Toolkit (AWT). The Java Swing provides richer and more sophisticated GUI components than AWT. The GUI components are ranging from a simple level to complex tree and table. The Java Swing provides the pluggable look and feels to allow look and feel of Java programs independent from the underlying platform.
 
-#### 1. if
-It is used to decide whether a certain statement or block of statements will be executed or not i.e if the condition is true then a block of statement is executed otherwise not.  the condition after evaluation genrates a boolan value.
-
-- _The syntax of the if statement._
-```cpp
-if(condition) 
-{
-   // Statements to execute if
-   // condition is true
+- _Example code for Java Swing._
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+// model part
+class Model {
+   private int x;
+   public Model() {
+      x = 0;
+   }
+   public Model(int x) {
+      this.x = x;
+   }
+    public void setX(){
+      x++;
+   }
+   public int getX() {
+      return x;
+   }
 }
-```
-- _A program to demonstrate the use of if statement._
-```cpp
-#include<iostream>
-using namespace std;
-
-int main() {
-    int i = 18;
- 
-    if (i >= 18)
-    {
-       cout<<"Eligible for Voting";
-    }
-    
-    return 0;
+// view part
+class View {
+   private JFrame frame;
+   private JLabel label;
+   private JButton button;
+   public View(String text) {
+      frame = new JFrame("View");
+      frame.getContentPane().setLayout(new BorderLayout());
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setSize(200,200);
+      frame.setVisible(true);
+      label = new JLabel(text);
+      frame.getContentPane().add(label, BorderLayout.CENTER);
+      button = new JButton("Button");
+      frame.getContentPane().add(button, BorderLayout.SOUTH);
+   }
+   public JButton getButton() {
+      return button;
+   }
+   public void setText(String text) {
+      label.setText(text);
+   }
 }
-```
-#### 2. if else
-The if statement alone tells us that if a condition is true it will execute a block of statements and if the condition is false it won’t. We can use the else statement with if statement to execute a block of code when the condition is false.
-
-> _**Note:** any statement outside the if else block will get executed without depending on the condition of if where as the else statemetn will only get executed if the condition of if is false._
-
-- _The syntax of the if else statement._
-```cpp
-if (condition)
-{
-    // Executes this block if
-    // condition is true
+// controller part
+class Controller {
+   private Model model;
+   private View view;
+   private ActionListener actionListener;
+   public Controller(Model model, View view) {
+      this.model = model;
+      this.view = view;
+   }
+   public void contol() {
+      actionListener = new ActionListener() {
+         public void actionPerformed(ActionEvent actionEvent) {
+            linkBtnAndLabel();
+         }
+      };
+      view.getButton().addActionListener(actionListener);
+   }
+   private void linkBtnAndLabel() {
+      model.setX();
+      view.setText(Integer.toString(model.getX()));
+   }
 }
-else
-{
-    // Executes this block if
-    // condition is false
-}
-```
-- _A program to demonstrate the use of if else statement._
-```cpp
-#include<iostream>
-using namespace std;
-
-int main() {
-    int i = 18;
- 
-    if (i >= 18) {
-    	cout<<"Eligible for Voting";
-    }
-    else {
-    	cout<<"Underage"; 
-    }
-    
-    return 0;
-}
-```
-> _**Note:** if statement can be written alone but there must be a if statement for every else statement _i.e._ else statement cannot be wriiten without a if statement._
-
-#### 3. Nested if else
-Nested statements means an if statement inside another if statement. These can be used when we require more than one conditions to be true for particular statement to get executed.
-- _The syntax of the nested statement._
-```cpp
-if (condition1) 
-{
-   // Executes when condition1 is true
-   if (condition2) 
-   {
-      // Executes when condition2 is true
+// main class
+public class SwingExample {
+   public static void main(String[] args) {
+      SwingUtilities.invokeLater(new Runnable() {
+         @Override
+         public void run() {
+            try {
+// Look and Feel, Java Look and Feel
+               UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ex) { }
+            Model model = new Model(0);
+            View view = new View("-");
+            Controller controller = new Controller(model,view);
+            controller.contol();
+         }
+      });
    }
 }
 ```
-> _**Note:** You can aslo use combined condition in a single if condition rather than using nested if condition like `if(condition1 && condition2)` but be aware, statementws inside it will run only when both the conditions are true._
-- _A program to demonstrate the use of neseted statements._
-```cpp
-#include<iostream>
-using namespace std;
-int main() {
-    int i = 10;
+
+[Back to table of contents](#table-of-contents)
+
+## What is Component class
+
+A _component_ is an object having a graphical representation that can be displayed on the screen and that can interact with the user. Examples of components are the buttons, checkboxes, and scrollbars of a typical graphical user interface.
+
+## Methods of Component class
+
+The methods of Component class are widely used in java swing that are given below.
+
+1.	**public void add(Component c)** - add a component on another component.
+2.	**public void setSize(int width,int height)** - sets size of the component.
+3.	**public void setLayout(LayoutManager m)** - sets the layout manager for the component.
+4.	**public void setVisible(boolean b)** - sets the visibility of the component. It is by default false.
+
+[Back to table of contents](#table-of-contents)
+
+## What is Container class
+
+A Container class can be described as a special component that can hold the gathering of the components. The important methods of the Container class are add(), invalidate() and validate().
+
+[Back to table of contents](#table-of-contents)
+
+## Swing Components
+Swing components are the interactive elements in a Java application.
+
+### JFrame
+JFrame works like the main window where components like labels, buttons, textfields are added to create a GUI.
+
+#### Constructor of JFrame are: 
+
+1.	**JFrame()** - It constructs a new frame that is initially invisible.
+2.	**JFrame(GraphicsConfiguration gc)** - It creates a Frame in the specified GraphicsConfiguration of a screen device and a blank title.
+3.	**JFrame(String title)** - It creates a new, initially invisible Frame with the specified title.
+4.	**JFrame(String title, GraphicsConfiguration gc)** - It creates a JFrame with the specified title and the specified GraphicsConfiguration of a screen device.
+
+- _Example code for JFrame_
+```java
+import java.awt.FlowLayout;  
+import javax.swing.JButton;  
+import javax.swing.JFrame;  
+import javax.swing.JLabel;  
+import javax.swing.*;  
+public class JFrameExample {  
+    public static void main(String s[]) {  
+        JFrame frame = new JFrame("JFrame Example");  
+        JPanel panel = new JPanel();  
+        panel.setLayout(new FlowLayout());  
+        JLabel label = new JLabel("JFrame By Example");  
+        JButton button = new JButton();  
+        button.setText("Button");  
+        panel.add(label);  
+        panel.add(button);  
+        frame.add(panel);  
+        frame.setSize(200, 300);  
+        frame.setLocationRelativeTo(null);  
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        frame.setVisible(true);  
+    }  
+}
+```
+### JPanel
+JPanel, a part of Java Swing package, is a container that can store a group of components. The main task of JPanel is to organize components, various layouts can be set in JPanel which provide better organisation of components, however it does not have a title bar.
+
+#### Constructor of JPanel are: 
  
-    if (i == 10)
+1.	**JPanel()** - creates a new panel with flow layout
+2.	**JPanel(LayoutManager l)** - creates a new JPanel with specified layoutManager
+3.	**JPanel(boolean isDoubleBuffered)** - creates a new JPanel with a specified buffering strategy
+4.	**JPanel(LayoutManager l, boolean isDoubleBuffered)** - creates a new JPanel with specified layoutManager and a specified buffering strategy
+
+- _Example code for JPanel_
+```java
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+class JPanelExample extends JFrame {
+ 
+    // JFrame
+    static JFrame f;
+ 
+    // JButton
+    static JButton b, b1, b2;
+ 
+    // label to display text
+    static JLabel l;
+ 
+    // main class
+    public static void main(String[] args)
     {
-        // First if statement
-        if (i < 15)
-           cout<<"i is smaller than 15\n";
+        // create a new frame to store text field and button
+        f = new JFrame("panel");
  
-        // Nested - if statement
-        // Will only be executed if statement above
-        // is true
-        if (i < 12)
-            cout<<"i is smaller than 12 too\n";
-        else
-            cout<<"i is greater than 15";
+        // create a label to display text
+        l = new JLabel("panel label");
+ 
+        // create a new buttons
+        b = new JButton("button1");
+        b1 = new JButton("button2");
+        b2 = new JButton("button3");
+ 
+        // create a panel to add buttons
+        JPanel p = new JPanel();
+ 
+        // add buttons and textfield to panel
+        p.add(b);
+        p.add(b1);
+        p.add(b2);
+        p.add(l);
+ 
+        // setbackground of panel
+        p.setBackground(Color.CYAN);
+ 
+        // add panel to frame
+        f.add(p);
+ 
+        // set the size of frame
+        f.setSize(300, 300);
+ 
+        f.show();
     }
-    return 0;
 }
 ```
-#### 4. if else if Ladder
-By using this a user can decide among multiple options. Conditions are checked from the top to down. As soon as one of the conditions controlling the if is true, the statement associated with that if is executed, and the rest of the else-if ladder is bypassed. If none of the conditions are true, then the final else statement will be executed.
+### JButton
+The JButton class is used to create a labeled button that has platform independent implementation. The application result in some action when the button is pushed. It inherits AbstractButton class.
 
-- _The syntax of the if else statement._
-```cpp
-if (condition1)
-    // statement1;
-else if (condition2)
-    // statement2;
-else if (condition3)
-    // statement3;
-.
-.
-else
-    // else statements;
-```
-- _A program to demonstrate the use of if else statement._
-```cpp
-#include<iostream>
-using namespace std;
-int main()
-{
-    int i = 20;
-  
-    if (i == 10)
-        cout<<"i is 10";
-    else if (i == 15)
-        cout<<"i is 15";
-    else if (i == 20)
-        cout<<"i is 20";
-    else
-        cout<<"i is not present";
+#### Constructor of JButton are:
+
+1.	**JButton()** - It creates a button with no text and icon.
+2.	**JButton(String s)** - It creates a button with the specified text.
+3.	**JButton(Icon i)** - It creates a button with the specified icon object.
+
+- _Example code for JButton_
+```java
+import javax.swing.*;    
+public class JButtonExample {  
+public static void main(String[] args) {  
+    JFrame f=new JFrame("Button Example");  
+    JButton b=new JButton("Click Here");  
+    b.setBounds(50,100,95,30);  
+    f.add(b);  
+    f.setSize(400,400);  
+    f.setLayout(null);  
+    f.setVisible(true);   
+}  
 }
 ```
-#### 5. switch case
-Switch case statements are a substitute for long if statements that compare a variable to several values.  
-The switch statement is a multiway branch statement. It provides an easy way to dispatch execution to different parts of code based on the value of the control variable.
+### JLabel
+JLabel is a class of java Swing . JLabel is used to display a short string or an image icon. JLabel can display text, image or both . JLabel is only a display of text or image and it cannot get focus . JLabel is inactive to input events such a mouse focus or keyboard focus. By default labels are vertically centered but the user can change the alignment of label.
 
-> _**Note:** The control variable can only be of integer or character data type._
-
-- _Syntax of a switch case statement._
-```cpp
-inty n;  // n is the control variable.
-switch (n)
-{
-    case 1: // code to be executed if n = 1;
-        break;
-    case 2: // code to be executed if n = 2;
-        break;
-    default: // code to be executed if n doesn't match any cases
-}
-```
-- _A program to demonstrate switch case._
-```cpp
-include <iostream>
-using namespace std;
+#### Constructor of the class are: 
  
-int main() {
-	int x = 2;
-    	
-	switch (x) {
-        	case 1:
-        	    cout << "Choice is 1";
-        	    break;
-        	case 2:
-        	    cout << "Choice is 2";
-        	    break;
-        	case 3:
-       	     	    cout << "Choice is 3";
-            	    break;
-        	default:
-        	    cout << "Choice other than 1, 2 and 3";
-        	    break; 
-    	}
-	
-	return 0;
-}
-```
+1.	**JLabel()** - creates a blank label with no text or image in it.
+2.	**JLabel(String s)** - creates a new label with the string specified.
+3.	**JLabel(Icon i)** - creates a new label with a image on it.
+4.	**JLabel(String s, Icon i, int align)** - creates a new label with a string, an image and a specified horizontal alignment
 
-### Iterative Statements
-Iterative statements are called as loops. Loops in programming come into use when we need to repeatedly execute same block of statements.  
-To create a loop we require:  
-
-1. **Start point** from where we need to start the loop.
-2. **Test condition** which will get us out of loop when it gets full-filled.
-3. **Step difference** _i.e._ from start how much we need to increment or decrement in each iteration to reach the end.  
-
-There are of two types of loops:
-
-- **Entry controlled:** Test condition is tested before entering the loop body. The for loops and while loops are entry controlled loops.
-- **Exit controlled:** Test condition is tested or evaluated at the end of loop body. Therefore, the loop body will execute atleast once, irrespective of whether the test condition is true or false. The do while loop is a exit controlled loop.
-
-#### 1. for
-- _Syntax for using for loop._
-```cpp
-for (initialization expr; test expr; update expr)
-{    
-     // body of the loop
-     // statements we want to execute
-}
-```
-- _A program to demonstrate for loop._
-```cpp
-#include <iostream>
-using namespace std;
-  
-int main()
-{
-    for (int i = 1; i <= 10; i++)
-    {
-        cout << "Hello World\n";
-    }
-  
-    return 0;
-}
-```
-
-#### 2. while
-- _Syntax for using while loop._
-```cpp
-initialization expression;
-while (test_expression)
-{
-   // statements
+- _Example code for Jlabel_
+```java
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+class JLabelExample extends JFrame {
  
-  update_expression;
-}
-```
-- _A program to demonstrate while loop._
-```cpp
-#include <iostream>
-using namespace std;
-  
-int main()
-{
-    // initialization expression
-    int i = 1;
-  
-    // test expression
-    while (i < 6)
+    // frame
+    static JFrame f;
+ 
+    // label to display text
+    static JLabel l;
+ 
+    // default constructor
+    JLabelExample()
     {
-        cout << "Hello World\n";
-  
-        // update expression
-        i++;
     }
-  
-    return 0;
-}
-```
-
-#### 3. do while
-In do while loop the loop body will execute at least once irrespective of test condition as it is a exit controlled loop.  
-- _Syntax for using do while loop._
-```cpp
-initialization expression;
-do
-{
-   // statements
-
-   update_expression;
-} while (test_expression);
-```
-
-> _**Note:** Notice the semi – colon(“;”) in the end of loop._
-
-- _A program to demonstrate do while loop._
-```cpp
-#include <iostream>
-using namespace std;
-  
-int main()
-{
-    int i = 2; // Initialization expression
-  
-    do
+ 
+    // main class
+    public static void main(String[] args)
     {
-        // loop body
-        cout << "Hello World\n";
-  
-        // update expression
-        i++;
-  
-    }  while (i < 1);   // test expression
-  
-    return 0;
+        // create a new frame to store text field and button
+        f = new JFrame("label");
+ 
+        // create a label to display text
+        l = new JLabel();
+ 
+        // add text to label
+        l.setText("label text");
+ 
+        // create a panel
+        JPanel p = new JPanel();
+ 
+        // add label to panel
+        p.add(l);
+ 
+        // add panel to frame
+        f.add(p);
+ 
+        // set the size of frame
+        f.setSize(300, 300);
+ 
+        f.show();
+    }
 }
 ```
+### JRadioButton
+The JRadioButton class is used to create a radio button. It is used to choose one option from multiple options. It is widely used in exam systems or quiz.
 
-### Jump Statements
-Jump Statement makes the control jump to another section of the program unconditionally when encountered.
-#### 1. break
-It is used to terminate the loop or switch-case immediately. In case of loops, as soon as the break statement is encountered from within a loop, 
-the loop iterations stops there and control returns from the loop immediately to the first statement after the loop. Similarly, in case of switch,
-when break is encountered the control returns from the case immediately to the first statement after the switch body.
+#### Constructors of JRadioButton are:
 
-- _Syntax to use break._
-```cpp
-// in case of loops
-while(condition1){
-	// statement(s)
-	if(condition2){
-		break;
-	}
-	// update loop
+1.	**JRadioButton()** - Creates an unselected radio button with no text.
+2.	**JRadioButton(String s)** - Creates an unselected radio button with specified text.
+3.	**JRadioButton(String s, boolean selected)** - Creates a radio button with the specified text and selected status.
+
+- _Example code for JRadioButton_
+```java
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+  
+class Demo extends JFrame {
+  
+    // Declaration of object of JRadioButton class.
+    JRadioButton jRadioButton1;
+  
+    // Declaration of object of JRadioButton class.
+    JRadioButton jRadioButton2;
+  
+    // Declaration of object of JButton class.
+    JButton jButton;
+  
+    // Declaration of object of ButtonGroup class.
+    ButtonGroup G1;
+  
+    // Declaration of object of  JLabel  class.
+    JLabel L1;
+  
+    // Constructor of Demo class.
+    public Demo()
+    {
+  
+        // Setting layout as null of JFrame.
+        this.setLayout(null);
+  
+        // Initialization of object of "JRadioButton" class.
+        jRadioButton1 = new JRadioButton();
+  
+        // Initialization of object of "JRadioButton" class.
+        jRadioButton2 = new JRadioButton();
+  
+        // Initialization of object of "JButton" class.
+        jButton = new JButton("Click");
+  
+        // Initialization of object of "ButtonGroup" class.
+        G1 = new ButtonGroup();
+  
+        // Initialization of object of " JLabel" class.
+        L1 = new JLabel("Qualification");
+  
+        // setText(...) function is used to set text of radio button.
+        // Setting text of "jRadioButton2".
+        jRadioButton1.setText("Under-Graduate");
+  
+        // Setting text of "jRadioButton4".
+        jRadioButton2.setText("Graduate");
+  
+        // Setting Bounds of "jRadioButton2".
+        jRadioButton1.setBounds(120, 30, 120, 50);
+  
+        // Setting Bounds of "jRadioButton4".
+        jRadioButton2.setBounds(250, 30, 80, 50);
+  
+        // Setting Bounds of "jButton".
+        jButton.setBounds(125, 90, 80, 30);
+  
+        // Setting Bounds of JLabel "L2".
+        L1.setBounds(20, 30, 150, 50);
+  
+        // "this" keyword in java refers to current object.
+        // Adding "jRadioButton2" on JFrame.
+        this.add(jRadioButton1);
+  
+        // Adding "jRadioButton4" on JFrame.
+        this.add(jRadioButton2);
+  
+        // Adding "jButton" on JFrame.
+        this.add(jButton);
+  
+        // Adding JLabel "L2" on JFrame.
+        this.add(L1);
+  
+        // Adding "jRadioButton1" and "jRadioButton3" in a Button Group "G2".
+        G1.add(jRadioButton1);
+        G1.add(jRadioButton2);
+    }
 }
-
-// in case of switch
-switch(control_variable){
-	case 1:
-		// statement(s)
-		break;
-	case 2:
-		// statement(s)
-		break;
+  
+class JRadioButtonExample {
+    // Driver code.
+    public static void main(String args[])
+    { // Creating object of demo class.
+        Demo f = new Demo();
+  
+        // Setting Bounds of JFrame.
+        f.setBounds(100, 100, 400, 200);
+  
+        // Setting Title of frame.
+        f.setTitle("RadioButtons");
+  
+        // Setting Visible status of frame as true.
+        f.setVisible(true);
+    }
 }
 ```
+### JTextField
+JTextField is a part of javax.swing package. The class JTextField is a component that allows editing of a single line of text. JTextField inherits the JTextComponent class and uses the interface SwingConstants.
 
-> _**Note:** In case of nested loops if we break out from inner loop the next statement from the outer loop will get executed._
+#### Constructors of JTextField are: 
+ 
+1.	**JTextField()** - constructor that creates a new TextField
+2.	**JTextField(int columns)** - constructor that creates a new empty TextField with specified number of columns.
+3.	**JTextField(String text)** - constructor that creates a new empty text field initialized with the given string.
+4.	**JTextField(String text, int columns)** - constructor that creates a new empty textField with the given string and a specified number of columns .
+5.	**JTextField(Document doc, String text, int columns)** - constructor that creates a textfield that uses the given text storage model and the given number of columns.
 
-#### 2. continue
-Opposite to the break statement, instead of terminating the loop, it forces to execute the next iteration of the loop. 
-When the continue statement is executed in the loop, 
-the code inside the loop following the continue statement will be skipped and next iteration of the loop will begin.
-
-> _**Note:** The continue can only be used inside a loop._
-
-#### 3. return
-This statement returns the flow of the execution to the function from where it is called. 
-It is usually used at the end of a function to end or terminate it with or without a value.
-The return statement only returns a value which is of the same data type as the return type of the function in its declaretion.
-
-- _Syntax of a return statement._
-```cpp
-return_type function1(args){
-	data_type value;	//data_type = return_type
-	// statement(s)
-	return value;
-}
-```
-
-> _**Note:** a function decleared void cannot return any value._
-
-- _A Program to demonstrate Jump statements._
-```cpp
-#include<iostream>
-using namespace std;
-
-int main()
-{
-    
-    cout<<"Counting from 1 to 10"<<endl;
-    
-    for(int i=1; i<11; i++){
-        if(i == 4){
-            cout<<endl;
-            continue;
+- _Example code for JTextField_
+```java
+import java.awt.event.*;
+import javax.swing.*;
+class JTextFieldExample extends JFrame implements ActionListener {
+    // JTextField
+    static JTextField t;
+ 
+    // JFrame
+    static JFrame f;
+ 
+    // JButton
+    static JButton b;
+ 
+    // label to display text
+    static JLabel l;
+ 
+    // default constructor
+    JTextFieldExample()
+    {
+    }
+ 
+    // main class
+    public static void main(String[] args)
+    {
+        // create a new frame to store text field and button
+        f = new JFrame("textfield");
+ 
+        // create a label to display text
+        l = new JLabel("nothing entered");
+ 
+        // create a new button
+        b = new JButton("submit");
+ 
+        // create a object of the text class
+        JTextFieldExample te = new JTextFieldExample();
+ 
+        // addActionListener to button
+        b.addActionListener(te);
+ 
+        // create a object of JTextField with 16 columns
+        t = new JTextField(16);
+ 
+        // create a panel to add buttons and textfield
+        JPanel p = new JPanel();
+ 
+        // add buttons and textfield to panel
+        p.add(t);
+        p.add(b);
+        p.add(l);
+ 
+        // add panel to frame
+        f.add(p);
+ 
+        // set the size of frame
+        f.setSize(300, 300);
+ 
+        f.show();
+    }
+ 
+    // if the button is pressed
+    public void actionPerformed(ActionEvent e)
+    {
+        String s = e.getActionCommand();
+        if (s.equals("submit")) {
+            // set the text of the label to the text of the field
+            l.setText(t.getText());
+ 
+            // set the text of field to blank
+            t.setText("  ");
         }
-        if(i == 8){
-            break;
+     }
+}
+```
+### JTextArea
+JTextArea is a part of java Swing package . It represents a multi line area that displays text. It is used to edit the text .
+JTextArea inherits JComponent class. The text in JTextArea can be set to different available fonts and can be appended to new text . A text area can be customized to the need of user .
+
+#### Constructors of JTextArea are:
+
+1.	**JTextArea()** - constructs a new blank text area .
+2.	**JTextArea(String s)** - constructs a new text area with a given initial text.
+3.	**JTextArea(int row, int column)** - constructs a new text area with a given number of rows and columns.
+4.	**JTextArea(String s, int row, int column)** - constructs a new text area with a given number of rows and columns and a given initial text.
+
+- _Example code for JTextArea_
+```java
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+class JTextAreaExample extends JFrame implements ActionListener {
+  
+    // JFrame
+    static JFrame f;
+  
+    // JButton
+    static JButton b;
+  
+    // label to display text
+    static JLabel l;
+  
+    // text area
+    static JTextArea jt;
+  
+    // default constructor
+    JTextAreaExample()
+    {
+    }
+  
+    // main class
+    public static void main(String[] args)
+    {
+        // create a new frame to store text field and button
+        f = new JFrame("textarea");
+  
+        // create a label to display text
+        l = new JLabel("nothing entered");
+  
+        // create a new button
+        b = new JButton("submit");
+  
+        // create a object of the text class
+        JTextAreaExample te = new JTextAreaExample();
+  
+        // addActionListener to button
+        b.addActionListener(te);
+  
+        // create a text area, specifying the rows and columns
+        jt = new JTextArea(10, 10);
+  
+        JPanel p = new JPanel();
+  
+        // add the text area and button to panel
+        p.add(jt);
+        p.add(b);
+        p.add(l);
+  
+        f.add(p);
+        // set the size of frame
+        f.setSize(300, 300);
+  
+        f.show();
+    }
+  
+    // if the button is pressed
+    public void actionPerformed(ActionEvent e)
+    {
+        String s = e.getActionCommand();
+        if (s.equals("submit")) {
+            // set the text of the label to the text of the field
+            l.setText(jt.getText());
         }
-        cout<<i<<endl;
     }
-    return 0;
 }
 ```
+### JCheckBox
+JCheckBox is a part of Java Swing package . JCheckBox can be selected or deselected . It displays it state to the user . JCheckBox is an implementation to checkbox . JCheckBox inherits JToggleButton class.
 
-[Back to table of contents](#table-of-contents)
+#### Constructor of the class are:
 
+1.	**JCheckBox()** - creates a new checkbox with no text or icon
+2.	**JCheckBox(Icon i)** - creates a new checkbox with the icon specified
+3.	**JCheckBox(Icon icon, boolean s)** - creates a new checkbox with the icon specified and the boolean value specifies whether it is selected or not.
+4.	**JCheckBox(String t)** - creates a new checkbox with the string specified
+5.	**JCheckBox(String text, boolean selected)** - creates a new checkbox with the string specified and the boolean value specifies whether it is selected or not.
+6.	**JCheckBox(String text, Icon icon)** - creates a new checkbox with the string and the icon specified.
+7.	**JCheckBox(String text, Icon icon, boolean selected)** - creates a new checkbox with the string and the icon specified and the boolean value specifies whether it is selected or not.
 
-## Arrays
-
-[Back to table of contents](#table-of-contents)
-
-
-## Space Time Complexity
-
-[Back to table of contents](#table-of-contents)
-
-
-## Algorithms
-
-[Back to table of contents](#table-of-contents)
-
-
-## STL
-
-The Standard Template Library (STL) is a set of C++ template classes to provide common programming data structures and algorithms such as lists, stacks, queues, etc. 
-It is a generalized library and so, its components are parameterized. 
-A working knowledge of [template classes](https://www.geeksforgeeks.org/templates-cpp/) is a prerequisite for working with STL.
-
-STL has three components:
-
-- **Containers:**  
-the container classes is the place where we store objects and data. 
-Here are some important containers which we use in competitive coding:
-
-	- vector
-	- stack 
-	- queue
-	- map
-
-  you need to include the specific header to use the container like:
-```cpp
-#include <vector>		//header to use vectors in the code.
-#include <stack>		//header to use stacks in the code.
-```
-
-- **Iterators:**  
-As the name suggests, iterators are used for working upon a sequence of values. 
-Simply put, they are used to point at the memory addresses of containers.
-
-- **Algorithms:**  
-These are the functions especially designed to be used on ranges of elements.
-They act on containers and provide means for various operations for the contents of the containers.
-All the important Algorithms are defined in the algorithm header and we need to include it to use them.
-```cpp
-#include <algorithm>		//header to use STL algorithms in the code.
-```
-Let's now take an example of vectors to understand properly.
-
-- _Program to initialize an empty vector, push some values in it and print the vector after it._
-```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
-
-int main()
-{
-    vector<int> v;
-    
-    v.push_back(50);
-    v.push_back(35);
-    v.push_back(90);
-    v.push_back(19);
-    v.push_back(22);
-    v.push_back(88);
-    v.push_back(12);
-    
-    cout<<"The Elements are: ";
-    for(int i=0; i<v.size(); i++){
-        cout<<v[i]<<" ";
+- _Example code for JCheckBox_
+```java
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+class JCheckBoxExample extends JFrame {
+  
+    // frame
+    static JFrame f;
+  
+    // main class
+    public static void main(String[] args)
+    {
+        // create a new frame
+        f = new JFrame("frame");
+  
+        // set layout of frame
+        f.setLayout(new FlowLayout());
+  
+        // create checkbox
+        JCheckBox c1 = new JCheckBox("checkbox 1");
+        JCheckBox c2 = new JCheckBox("checkbox 2");
+  
+        // create a new panel
+        JPanel p = new JPanel();
+  
+        // add checkbox to panel
+        p.add(c1);
+        p.add(c2);
+  
+        // add panel to frame
+        f.add(p);
+  
+        // set the size of frame
+        f.setSize(300, 300);
+  
+        f.show();
     }
-    cout<<endl<<endl;
-    
-    return 0;
 }
 ```
+### JComboBox
+JComboBox is a part of Java Swing package. JComboBox inherits JComponent class . JComboBox shows a popup menu that shows a list and the user can select a option from that specified list . JComboBox can be editable or read- only depending on the choice of the programmer.
 
-- _To get the size of vetor._
-```cpp
-    cout<<"Size of Vector: "<<v.size()<<endl<<endl;
-```
+#### Constructor of the JComboBox are: 
+ 
+1.	**JComboBox()** - creates a new empty JComboBox .
+2.	**JComboBox(ComboBoxModel M)** - creates a new JComboBox with items from specified ComboBoxModel
+3.	**JComboBox(E \[ \] i)** - creates a new JComboBox with items from specified array.
+4.	**JComboBox(Vector items)** - creates a new JComboBox with items from the specified vector
 
-- _To get the first and last element of vector._
-```cpp
-    cout<<"First Element: "<<v.front()<<"    "<<"Last Element: "<<v.back()<<endl<<endl;
-```
-
-- _To insert elements at desired index in vector._ 
-```cpp
-    v.insert(v.begin(), 5);
-    v.insert(v.begin()+3, 5);
-    v.insert(v.begin()+9, {1,11,111});
-    
-    cout<<"The New Elements are: ";
-    for(int i=0; i<v.size(); i++){
-        cout<<v[i]<<" ";
+- _Example code for JComboBox_
+```java
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+class JComboBoxExample extends JFrame implements ItemListener {
+ 
+    // frame
+    static JFrame f;
+ 
+    // label
+    static JLabel l, l1;
+ 
+    // combobox
+    static JComboBox c1;
+ 
+    // main class
+    public static void main(String[] args)
+    {
+        // create a new frame
+        f = new JFrame("frame");
+ 
+        // create a object
+        JComboBoxExample s = new JComboBoxExample();
+ 
+        // set layout of frame
+        f.setLayout(new FlowLayout());
+ 
+        // array of string containing cities
+        String s1[] = { "Jalpaiguri", "Mumbai", "Noida", "Kolkata", "New Delhi" };
+ 
+        // create checkbox
+        c1 = new JComboBox(s1);
+ 
+        // add ItemListener
+        c1.addItemListener(s);
+ 
+        // create labels
+        l = new JLabel("select your city ");
+        l1 = new JLabel("Jalpaiguri selected");
+ 
+        // set color of text
+        l.setForeground(Color.red);
+        l1.setForeground(Color.blue);
+ 
+        // create a new panel
+        JPanel p = new JPanel();
+ 
+        p.add(l);
+ 
+        // add combobox to panel
+        p.add(c1);
+ 
+        p.add(l1);
+ 
+        // add panel to frame
+        f.add(p);
+ 
+        // set the size of frame
+        f.setSize(400, 300);
+ 
+        f.show();
     }
-    cout<<endl<<endl;
-```
-
-- _Algorithm to reverse a vector._
-```cpp
-    reverse(v.begin(), v.end());
-    
-    cout<<"Reversed Vector: ";
-    for (int i = 0; i < v.size(); i++){
-        cout << v[i] << " ";
-    }        
-    cout<<endl<<endl;
-```
-
-- _To sort a vector in ascending order._
-```cpp
-    sort(v.begin(), v.end());
-    
-    cout<<"Sorted Elements in Ascending: ";
-    for (int i = 0; i < v.size(); i++){
-        cout << v[i] << " ";
-    }        
-    cout<<endl<<endl;
-```
-
-- _To sort a vector in descending order._
-```cpp
-    sort(v.begin(), v.end(), greater<int>());
-    
-    cout<<"Sorted Elements in Descending Order: ";
-    for (int i = 0; i < v.size(); i++){
-        cout << v[i] << " ";
-    }        
-    cout<<endl<<endl;
-```
-
-- _To get the sum of all elements in the vector._
-```cpp
-    cout<<"Sum of all Elements: "<<accumulate(v.begin(),v.end(),0)<<endl<<endl;
-```
-
-- _To get the maximum element in a vector._
-```cpp
-    cout<<"Max Element: "<<*max_element(v.begin(), v.end())<<endl<<endl;
-```
-
-- _To get the minimum element in a vector._
-```cpp
-    cout<<"Min Element: "<<*min_element(v.begin(), v.end())<<endl<<endl;
-```
-
-- _To remove the last element from the vector._
-```cpp
-    v.pop_back();
-    v.pop_back();
-    
-    cout<<"The Elements are: ";
-    for(int i=0; i<v.size(); i++){
-        cout<<v[i]<<" ";
+    public void itemStateChanged(ItemEvent e)
+    {
+        // if the state combobox is changed
+        if (e.getSource() == c1) {
+ 
+            l1.setText(c1.getSelectedItem() + " selected");
+        }
     }
+}
 ```
+### JDialog
+JDialog is a part Java swing package. The main purpose of the dialog is to add components to it. JDialog can be customized according to user need .
 
+#### Constructor of the class are: 
+ 
+1.	**JDialog()** - creates an empty dialog without any title or any specified owner
+2.	**JDialog(Frame o)** - creates an empty dialog with a specified frame as its owner
+3.	**JDialog(Frame o, String s)** - creates an empty dialog with a specified frame as its owner 
+and a specified title
+4.	**JDialog(Window o)** - creates an empty dialog with a specified window as its owner
+5.	**JDialog(Window o, String t)** - creates an empty dialog with a specified window as its owner and specified title.
+6.	**JDialog(Dialog o)** - creates an empty dialog with a specified dialog as its owner
+7.	**JDialog(Dialog o, String s)** - creates an empty dialog with a specified dialog as its owner and specified title.
+
+- _Example code for JDialog_
+```java
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+class JDialogExample extends JFrame implements ActionListener {
+ 
+    // frame
+    static JFrame f;
+ 
+    // main class
+    public static void main(String[] args)
+    {
+        // create a new frame
+        f = new JFrame("frame");
+ 
+        // create a object
+        JDialogExample s = new JDialogExample();
+ 
+        // create a panel
+        JPanel p = new JPanel();
+ 
+        JButton b = new JButton("click");
+ 
+        // add actionlistener to button
+        b.addActionListener(s);
+ 
+        // add button to panel
+        p.add(b);
+ 
+        f.add(p);
+ 
+        // set the size of frame
+        f.setSize(400, 400);
+ 
+        f.show();
+    }
+    public void actionPerformed(ActionEvent e)
+    {
+        String s = e.getActionCommand();
+        if (s.equals("click")) {
+            // create a dialog Box
+            JDialog d = new JDialog(f, "dialog Box");
+ 
+            // create a label
+            JLabel l = new JLabel("this is a dialog box");
+ 
+            d.add(l);
+ 
+            // setsize of dialog
+            d.setSize(100, 100);
+ 
+            // set visibility of dialog
+            d.setVisible(true);
+        }
+    }
+}
+```
 [Back to table of contents](#table-of-contents)
 
-
-## Create Your Profile on HackerRank
-
-- _**Step 1:** Open [HackerRank](https://www.hackerrank.com/) from your laptop._ 
-- _**Step 2:** Click on Sign Up and Code Button under the "For Developers" Option._
-- _**Step 3:** Enter your personal details and Submit the form._
-- _**Step 4:** On the next screen, select Learn and Compete with others and then select the options according to you._ 
-- _**Step 5:** Scroll down to the Skills Available for Practice Section and select Algorithms from there._
+## Tic Tac Toe Game Code
 
 [Back to table of contents](#table-of-contents)
-
-
-## Contest
-
-We have a small contest planned for you. This will help you practice and implement the learnings from the session. 
-
-The contest will be of 45 mins in which you will have to give solutions for just 3 problems. The contest will be hosted on HackerRank and the link for the same will be shared at the end of the webinar.
-> _**Important:** The top rank holders of the leaderboard will be awarded by some exciting prizes!_
-
-The winners will be announced according to the leaderboard, next week _i.e._, 20th June'21 in our next session.
 
 ##  The End
 
