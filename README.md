@@ -1,6 +1,7 @@
 # GUI Game Programming with Java
 
-<!-- ![]() -->
+ ![image](images/firstPage.png?raw=true)
+ 
  This repository will act as a guide for you throughout the webinar.
 
 ## Materials for the Session
@@ -44,9 +45,6 @@ It doesn't matter if you join our webinar a little late or you prefer to do it a
 We are going to use them to devlop our GUI game.
 > To Download Standard Edition of JDK14 click [here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html#license-lightbox)  
 > To Download Eclipse IDE 2021-03 click [here](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-03/R/eclipse-inst-jre-win64.exe)
-
-- _[Here is a video to help in downloading them](https://user-images.githubusercontent.com/85074532/122014794-2492d080-cddd-11eb-9595-672432b43686.mp4)_
-
 
 [Back to table of contents](#table-of-contents)
 
