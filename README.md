@@ -25,6 +25,7 @@ It doesn't matter if you join our webinar a little late or you prefer to do it a
 - [General info](#general-info)
 - [Installation of JDK and Eclipse IDE](#installation-of-jdk-and-eclipse-ide)
 - [Introduction to GUI](#introduction-to-gui)
+- [Where to use GUI](#where-to-use-gui)
 - [APIs in GUI](#apis-in-gui)
 - [AWT v/s Swing](#awt-vs-swing)
 - [What is Java Swing](#what-is-java-swing)
@@ -57,6 +58,104 @@ A GUI includes a range of user interface elements — which just means all the e
 
 - Input controls such as buttons, dropdown lists, checkboxes, and text fields.
 - Informational elements such as labels, banners, icons, or notification dialogs.
+
+- _A non-GUI java code to get sum of two numbers_
+```java
+import java.util.Scanner;
+public class Calculator {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter 1st number: ");
+		int a = sc.nextInt();
+		System.out.println("Enter 2nd number: ");
+		int b = sc.nextInt();
+		System.out.println("Sum of 2 numbers is: "+a+b);
+	}
+}
+```
+- _A GUI java code to get sum of two numbers_  
+```java
+import javax.swing.*;
+import java.awt.*;
+public class Calculator_GUI {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Calculator_GUI window = new Calculator_GUI();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	public Calculator_GUI() {
+		initialize();
+	}
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Enter 1st number:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(21, 34, 211, 34);
+		frame.getContentPane().add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(280, 34, 109, 31);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblEnterndNumber = new JLabel("Enter 2nd number:");
+		lblEnterndNumber.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblEnterndNumber.setBounds(21, 90, 211, 34);
+		frame.getContentPane().add(lblEnterndNumber);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(280, 96, 109, 31);
+		frame.getContentPane().add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(167, 214, 91, 36);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Add");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int a = Integer.parseInt(textField.getText());
+				int b = Integer.parseInt(textField_1.getText());
+				int sum = a+b;
+				textField_2.setText(""+sum);
+				textField_2.setEditable(false);
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnNewButton.setBounds(167, 155, 89, 34);
+		frame.getContentPane().add(btnNewButton);
+	}
+}
+```
+
+[Back to table of contents](#table-of-contents)
+
+## Where to use GUI
+The actions in a GUI are usually performed through direct manipulation of the graphical elements. Beyond computers, GUIs are used in –
+- Application Development
+- Handheld Mobile Devices
+- Software Development
+- Desktop Application Development
+- Game Development
 
 [Back to table of contents](#table-of-contents)
 
@@ -117,87 +216,26 @@ Java Swing is a set of APIs that provides a graphical user interface (GUI) for t
 - _Example code for Java Swing._
 ```java
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-// model part
-class Model {
-   private int x;
-   public Model() {
-      x = 0;
-   }
-   public Model(int x) {
-      this.x = x;
-   }
-    public void setX(){
-      x++;
-   }
-   public int getX() {
-      return x;
-   }
-}
-// view part
-class View {
-   private JFrame frame;
-   private JLabel label;
-   private JButton button;
-   public View(String text) {
-      frame = new JFrame("View");
-      frame.getContentPane().setLayout(new BorderLayout());
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setSize(200,200);
-      frame.setVisible(true);
-      label = new JLabel(text);
-      frame.getContentPane().add(label, BorderLayout.CENTER);
-      button = new JButton("Button");
-      frame.getContentPane().add(button, BorderLayout.SOUTH);
-   }
-   public JButton getButton() {
-      return button;
-   }
-   public void setText(String text) {
-      label.setText(text);
-   }
-}
-// controller part
-class Controller {
-   private Model model;
-   private View view;
-   private ActionListener actionListener;
-   public Controller(Model model, View view) {
-      this.model = model;
-      this.view = view;
-   }
-   public void contol() {
-      actionListener = new ActionListener() {
-         public void actionPerformed(ActionEvent actionEvent) {
-            linkBtnAndLabel();
-         }
-      };
-      view.getButton().addActionListener(actionListener);
-   }
-   private void linkBtnAndLabel() {
-      model.setX();
-      view.setText(Integer.toString(model.getX()));
-   }
-}
-// main class
-public class SwingExample {
-   public static void main(String[] args) {
-      SwingUtilities.invokeLater(new Runnable() {
-         @Override
-         public void run() {
-            try {
-// Look and Feel, Java Look and Feel
-               UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) { }
-            Model model = new Model(0);
-            View view = new View("-");
-            Controller controller = new Controller(model,view);
-            controller.contol();
-         }
-      });
-   }
-}
+public class SwingExample { 
+	//main method
+public static void main(String[] args) {  
+//creating instance of JFrame  
+JFrame f=new JFrame("Java Swing Example");
+//creating instance of JButton         
+JButton b=new JButton("click");  
+//x axis, y axis, width, height  
+b.setBounds(130,100,100, 40);
+//adding button in JFrame 
+f.add(b);  
+//400 width and 500 height 
+f.setSize(400,500);
+//using no layout managers  
+f.setLayout(null);
+//making the frame visible  
+f.setVisible(true);
+}  
+} 
+
 ```
 
 [Back to table of contents](#table-of-contents)
@@ -237,6 +275,135 @@ Here is the list of Swing Compnents covered in the webinar:
 - [JCheckBox](#jcheckbox)
 - [JComboBox](#jcombobox)
 - [JDialog](#jdialog)
+
+- _Example to show all swing components._
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class Examples {
+
+	private JFrame frmSwingComponentsExample;
+	private JTextField textField;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Examples window = new Examples();
+					window.frmSwingComponentsExample.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Examples() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmSwingComponentsExample = new JFrame();
+		frmSwingComponentsExample.setTitle("Swing Components Example");
+		frmSwingComponentsExample.setBounds(100, 100, 800, 600);
+		frmSwingComponentsExample.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSwingComponentsExample.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(494, 61, 230, 103);
+		frmSwingComponentsExample.getContentPane().add(panel);
+		
+		JLabel lblNewLabel = new JLabel("Select Gender");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+		panel.add(lblNewLabel);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Male");
+		buttonGroup.add(rdbtnNewRadioButton);
+		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel.add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Female");
+		buttonGroup.add(rdbtnNewRadioButton_1);
+		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel.add(rdbtnNewRadioButton_1);
+		
+		textField = new JTextField();
+		textField.setBounds(216, 47, 180, 25);
+		frmSwingComponentsExample.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Enter Name:");
+		lblNewLabel_1.setBounds(27, 47, 179, 25);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		frmSwingComponentsExample.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Enter Address:");
+		lblNewLabel_2.setBounds(27, 112, 179, 25);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		frmSwingComponentsExample.getContentPane().add(lblNewLabel_2);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(216, 96, 180, 103);
+		frmSwingComponentsExample.getContentPane().add(textArea);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Playing");
+		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		chckbxNewCheckBox.setBounds(328, 259, 97, 23);
+		frmSwingComponentsExample.getContentPane().add(chckbxNewCheckBox);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Reading");
+		chckbxNewCheckBox_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		chckbxNewCheckBox_1.setBounds(216, 259, 97, 23);
+		frmSwingComponentsExample.getContentPane().add(chckbxNewCheckBox_1);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Mumbai", "Indore", "Jaipur", "Bhopal", "Ujjain", "Udaipur"}));
+		comboBox.setBounds(254, 322, 142, 22);
+		frmSwingComponentsExample.getContentPane().add(comboBox);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Hobbies:");
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_1_1.setBounds(27, 257, 179, 25);
+		frmSwingComponentsExample.getContentPane().add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("City:");
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_1_2.setBounds(27, 326, 179, 25);
+		frmSwingComponentsExample.getContentPane().add(lblNewLabel_1_2);
+		
+		JCheckBox chckbxNewCheckBox_1_1 = new JCheckBox("Listening Songs");
+		chckbxNewCheckBox_1_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		chckbxNewCheckBox_1_1.setBounds(443, 259, 188, 23);
+		frmSwingComponentsExample.getContentPane().add(chckbxNewCheckBox_1_1);
+		
+		JCheckBox chckbxNewCheckBox_1_2 = new JCheckBox("Others");
+		chckbxNewCheckBox_1_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		chckbxNewCheckBox_1_2.setBounds(633, 259, 97, 23);
+		frmSwingComponentsExample.getContentPane().add(chckbxNewCheckBox_1_2);
+		
+		JButton btnNewButton = new JButton("Exit");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);			
+				}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 25));
+		btnNewButton.setBounds(336, 400, 153, 54);
+		frmSwingComponentsExample.getContentPane().add(btnNewButton);
+	}
+}
+```
 
 ### JFrame
 JFrame works like the main window where components like labels, buttons, textfields are added to create a GUI.
@@ -912,6 +1079,17 @@ class JDialogExample extends JFrame implements ActionListener {
 [Back to table of contents](#table-of-contents)
 
 ## Game Project
+Tic-tac-toe, noughts and crosses or Xs and Os, is a game for two players, player-X and player-O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner. It is a solved game with a forced draw assuming best play from both players.
+
+### Rules for Tic-Tac-Toe
+
+1. Play occurs on a 3 by 3 grid of 9 empty squares.
+2. Two players alternate marking empty squares, the first player marking Xs and the second player marking Os.
+3. If one player places three of the same marks in a row, that player wins.
+4. If the spaces are all filled and there is no winner, the game ends in a draw.
+
+- _**To view the source code of the game click here**_
+- _**To download the executable file of the game click here**_
 
 [Back to table of contents](#table-of-contents)
 
