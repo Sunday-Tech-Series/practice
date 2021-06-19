@@ -9,7 +9,7 @@
 It doesn't matter if you join our webinar a little late or you prefer to do it at your own pace, we have you covered. In this repository, you'll find everything you need.
 
 - Webinar youtube link
-- Slide deck
+- [Slide deck](./Slides.pdf)
 - [Whatsapp group chat](http://bit.ly/STS-1-WA)
 - [Polling during session](https://www.menti.com/)
 
@@ -1087,11 +1087,17 @@ Tic-tac-toe, noughts and crosses or Xs and Os, is a game for two players, player
 3. If one player places three of the same marks in a row, that player wins.
 4. If the spaces are all filled and there is no winner, the game ends in a draw.
 
-- _**To view the source code of the game click here**_
-- _**To download the executable file of the game click here**_
+> _**To view the source code of the game click [here](application/TicTacToe.java)**_
+> _**To download the executable file of the game click [here](application/TicTacToe.jar)**_
 
 [Back to table of contents](#table-of-contents)
 
 ##  The End
 
-> _**The repository will get updated during the session.**_
+**Congratulations you made it to the End!**  
+We have another Webinar next sunday _i.e._ 27<sup>th</sup> June, 2021 on the topic _**"ML-AI Packed with Python"**_ the details will be shared with you all soon.  
+<!-- You can register [here](#) for the same. 
+![image](images/nextSession.png?raw=true) -->
+
+> _**Hope to see you soon there!**_
+
