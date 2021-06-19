@@ -40,7 +40,7 @@ It doesn't matter if you join our webinar a little late or you prefer to do it a
 
 The graphical user interface (GUI) is a form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
 
-- _A simple code for Addition in text-based user interfaces v/s same in graphical user interface._  
+- _Output of a code in text-based user interfaces v/s same in graphical user interface._  
 ![image](images/example.png?raw=true)
 
 In this webinar we are going to learn the basic components of GUI and how to code them using Java Programming language. At the end of session we are going to use our learnings and make a small GUI game project.
