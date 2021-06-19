@@ -50,8 +50,7 @@ In this webinar we are going to learn the basic components of GUI and how to cod
 - **Java Development Kit** (JDK) is a software development environment used for developing Java applications and applets. It includes the Java Runtime Environment (JRE), an interpreter/loader (Java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc) and other tools needed in Java development.
 - **Eclipse** is an open-source Integrated Development Environment (IDE) supported by IBM. The Eclipse platform can be used to develop rich client applications, integrated development environments and other tools. It is popular for Java application development and Android apps, but can be used as an IDE for any programming language for which a plug-in is available. Eclipse is cross-platform and runs under Windows, Linux and macOS. 364 companies reportedly use Eclipse in their tech stacks, including Accenture, ViaVarejo, and Zalando.  
 We are going to use them to devlop our GUI game.
-> To Download Standard Edition of JDK14 click [here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html#license-lightbox)  
-> To Download Eclipse IDE 2021-03 click [here](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-03/R/eclipse-inst-jre-win64.exe)
+> View the [Installation Guide](./installationGuide.md) to see the steps to install both.   
 
 [Back to table of contents](#table-of-contents)
 
