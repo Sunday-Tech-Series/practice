@@ -223,6 +223,9 @@ public class TicTacToe implements ActionListener {
 		textfield.setText("O WINS !!");
 	}
 	
-	
+	public static void main(String[] args) {
+		@SuppressWarnings("unused")
+		TicTacToe tictactoe = new TicTacToe();
+	}
 }
 
