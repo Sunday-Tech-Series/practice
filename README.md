@@ -67,7 +67,8 @@ public class Calculator {
 		int a = sc.nextInt();
 		System.out.println("Enter 2nd number: ");
 		int b = sc.nextInt();
-		System.out.println("Sum of 2 numbers is: "+a+b);
+		int c = a+b;
+		System.out.println("Sum of 2 numbers is: "+ c);
 	}
 }
 ```
