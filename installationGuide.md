@@ -6,7 +6,7 @@ This is a step by step guide to help you all install the latest version of JDK a
 
 ## Steps for installing JDK
 
-> To Download Standard Edition of JDK14 click [here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html#license-lightbox)
+> To Download Standard Edition of JDK 16 click [here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html#license-lightbox)
 
 1.	Click on the link given above.
 2.	Click on ‘JDK Download’ given under Oracle JDK.
