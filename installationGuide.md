@@ -26,7 +26,7 @@ This is a step by step guide to help you all install the latest version of JDK a
 ### Steps for installing Window builder in Eclipse IDE
 
 1.	Go to Help > Install New Software > https://download.eclipse.org/releases/2021-03 (from drop down list).
-> _**Note:** if you already have another version of Eclipse in your system and you need to download the window builder plug-in then use the link `https://download.eclipse.org/releases/<you version of Eclipse IDE>` from the drop down list._ 
+> _**Note:** if you already have another version of Eclipse in your system and you need to download the window builder plug-in then use the link `https://download.eclipse.org/releases/<your version of Eclipse IDE>` from the drop down list._ 
 3.	Select ‘General purpose tools’ checkbox from the panel appeared. 
 4.	Click next > next > next.
 5.	Select ‘I accept the terms of the license agreements’ radio button.
