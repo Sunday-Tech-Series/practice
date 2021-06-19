@@ -1,6 +1,9 @@
 # Installation Guide
 This is a step by step guide to help you all install the latest version of JDK and Eclipse IDE supported by your system.
 
+> To view the screen recording for installation of JDK and Eclipse click [here](https://user-images.githubusercontent.com/85074532/122643401-39e56300-d12d-11eb-99c9-39a9da3c6351.mp4)  
+> To view the screen recording for installation of window builder plug-in in eclipse click [here](https://user-images.githubusercontent.com/85074532/122643525-e45d8600-d12d-11eb-80a8-9d1a60152ccd.mp4)
+
 ## Steps for installing JDK
 
 > To Download Standard Edition of JDK14 click [here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html#license-lightbox)
