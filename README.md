@@ -38,6 +38,13 @@ It doesn't matter if you join our webinar a little late or you prefer to do it a
 
 ## General info
 
+The graphical user interface (GUI) is a form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
+
+- _A simple code for Addition in text-based user interfaces v/s same in graphical user interface._  
+![image](images/example.png?raw=true)
+
+In this webinar we are going to learn the basic components of GUI and how to code them using Java Programming language. At the end of session we are going to use our learnings and make a small GUI game project.
+
 ## Installation of JDK and Eclipse IDE
 
 - **Java Development Kit** (JDK) is a software development environment used for developing Java applications and applets. It includes the Java Runtime Environment (JRE), an interpreter/loader (Java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc) and other tools needed in Java development.
@@ -1087,7 +1094,7 @@ Tic-tac-toe, noughts and crosses or Xs and Os, is a game for two players, player
 3. If one player places three of the same marks in a row, that player wins.
 4. If the spaces are all filled and there is no winner, the game ends in a draw.
 
-> _**To view the source code of the game click [here](application/TicTacToe.java)**_
+> _**To view the source code of the game click [here](application/TicTacToe.java)**_  
 > _**To download the executable file of the game click [here](application/TicTacToe.jar)**_
 
 [Back to table of contents](#table-of-contents)
