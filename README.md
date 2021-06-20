@@ -1102,7 +1102,7 @@ Tic-tac-toe, noughts and crosses or Xs and Os, is a game for two players, player
 
 **Congratulations you made it to the End!**  
 We have another Webinar next sunday _i.e._ 27<sup>th</sup> June, 2021 on the topic _**"Introduction to AI & ML using Python"**_ the details will be shared with you all soon.  
-<!-- You can register [here](#) for the same. -->
+You can register [here](http://bit.ly/STS-S2-3) for the same.
 ![image](images/nextSession.png?raw=true)
 
 > _**Hope to see you soon there!**_
